@@ -4,12 +4,12 @@ var testModule = {};
 
 testModule.controller = function() {
   this.todoList = new todoList.controller();
-  this.counterBox = new counterBox.controller(this.todoList.getCount.bind(this.todoList));
+//this.counterBox = new counterBox.controller(this.todoList.getCount.bind(this.todoList));
 };
 
 testModule.view = function(ctrl) {
   return [m("#todo", [new todoList.view(ctrl.todoList)])
-         ,m("#count", [new counterBox.view(ctrl.counterBox)])
+         ,m("#count", [new counterBox.view({"count": ctrl.todoList.getCount()})])
          ]
 };
 
